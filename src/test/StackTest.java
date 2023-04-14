@@ -56,7 +56,7 @@ public class StackTest {
         Coin coin3 = new Coin(1000,"Colombia");
         Coin coin4 = new Coin(400,"Venezuela");
         Coin coin5 = new Coin(200,"Mexico");
-        
+
         // Act
         stack.push(coin1);
         stack.push(coin2);
