@@ -1,5 +1,5 @@
 package model.dataestructures;
-import test.IHashTable;
+import interfaces.IHashTable;
 
 public class HashTable <K,V> implements IHashTable <K,V>{
     @Override

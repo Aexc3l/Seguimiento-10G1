@@ -1,11 +1,17 @@
 package model.dataestructures;
 
-import test.IStack;
+import exceptions.StackException;
+import interfaces.IStack;
 
 public class Stack<V> implements IStack<V> {
 
     private AltNode<V> top;
     private int size;
+
+    public Stack() {
+        this.top = null;
+        this.size = 0;
+    }
 
     public boolean isEmpty(){
         return top == null;
@@ -15,14 +21,16 @@ public class Stack<V> implements IStack<V> {
         AltNode<V> node = new AltNode<V>(value);
         node.setNext(top);
         top = node;
+        this.size++;
     }
 
-    public V pop() {
+    public V pop() throws StackException {
         if (isEmpty()) {
-            return null;
+            throw new StackException("Stack is empty");
         }
         V value = top.getValue();
         top = top.getNext();
+        this.size--;
 
         return value;
     }
@@ -33,6 +41,8 @@ public class Stack<V> implements IStack<V> {
         }
         return top.getValue();
     }
+
+    @Override
     public int size() {
         return this.size;
     }
