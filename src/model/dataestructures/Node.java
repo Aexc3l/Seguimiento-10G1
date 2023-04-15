@@ -28,11 +28,6 @@ public class Node<V, K extends Comparable<K>> {
         return key;
     }
 
-    @Override
-    public String toString(){
-        return "My value is: " + value;
-    }
-
     public Node<V, K> getNext() {
         return next;
     }
