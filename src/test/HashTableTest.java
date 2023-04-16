@@ -95,4 +95,113 @@ public class HashTableTest {
         assertEquals("Potter",hashTable.search(4));
         assertNotEquals(8, hashTable.getSize());
     }
+
+    @Test
+    public void testSearchOneKey(){
+        // Arrange
+        try {
+            hashTable.insert(1,"Miguel");
+            hashTable.insert(2,"Alfonso");
+        } catch (HashException e) {
+            throw new RuntimeException(e);
+        }
+
+        // Act
+        String result = hashTable.search(1);
+
+        // Assert
+        assertEquals("Miguel", result);
+
+    }
+    @Test
+    public void testSearchNonExistentKey(){
+        // Arrange
+        try {
+            hashTable.insert(1,"Miguel");
+            hashTable.insert(2,"Alfonso");
+        } catch (HashException e) {
+            throw new RuntimeException(e);
+        }
+
+        // Act
+        String result = hashTable.search(3);
+
+        // Assert
+        assertNull(result);
+    }
+
+    @Test
+    public void testSearchEmptyHash(){
+        // Arrange
+
+        // Act
+        String result = hashTable.search(1);
+
+        // Assert
+        assertNull(result);
+    }
+
+    @Test
+    public void testDeletefromHash(){
+        // Arrange
+        try {
+            hashTable.insert(1,"Miguel");
+            hashTable.insert(2,"Alfonso");
+        } catch (HashException e) {
+            throw new RuntimeException(e);
+        }
+
+        // Act
+        hashTable.delete(1);
+
+        // Assert
+        assertEquals(1, hashTable.getSize());
+        assertNull(hashTable.search(1));
+        assertEquals("Alfonso", hashTable.search(2));
+    }
+
+    @Test
+    public void testDeleteMultipleKeys(){
+        // Arrange
+        try {
+            hashTable.insert(1,"Miguel");
+            hashTable.insert(2,"Alfonso");
+            hashTable.insert(3,"Fausto");
+            hashTable.insert(4,"Roberto");
+        } catch (HashException e) {
+            throw new RuntimeException(e);
+        }
+
+        // Act
+        hashTable.delete(3);
+        hashTable.delete(4);
+
+        // Assert
+        assertEquals(2, hashTable.getSize());
+        assertNull(hashTable.search(4));
+        assertNull(hashTable.search(3));
+        assertEquals("Miguel", hashTable.search(1));
+        assertEquals("Alfonso", hashTable.search(2));
+
+    }
+
+    @Test
+    public void testDeleteAllKeys(){
+        // Arrange
+        try {
+            hashTable.insert(1,"Miguel");
+            hashTable.insert(2,"Alfonso");
+        } catch (HashException e) {
+            throw new RuntimeException(e);
+        }
+
+        // Act
+        hashTable.delete(1);
+        hashTable.delete(2);
+
+        // Assert
+        assertEquals(0, hashTable.getSize());
+        assertNull(hashTable.search(1));
+        assertNull(hashTable.search(2));
+    }
 }
