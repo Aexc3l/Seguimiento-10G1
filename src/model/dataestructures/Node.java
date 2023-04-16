@@ -6,7 +6,7 @@ public class Node<V, K extends Comparable<K>> {
     private K key;
 
     private Node<V, K> next;
-    private Node<V, K> back;
+    private Node<V, K> previous;
     public Node(V value, K key) {
         this.value = value;
         this.key = key;
@@ -36,11 +36,11 @@ public class Node<V, K extends Comparable<K>> {
         this.next = next;
     }
 
-    public void setBack(Node<V, K> back) {
-        this.back = back;
+    public void setPrevious(Node<V, K> previous) {
+        this.previous = previous;
     }
 
-    public Node<V, K> getBack() {
-        return back;
+    public Node<V, K> getPrevious() {
+        return previous;
     }
 }

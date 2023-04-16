@@ -1,7 +1,16 @@
 package interfaces;
 
+import exceptions.HashException;
+
 public interface IHashTable <K,V>{
-    public void insert(K key, V value) throws Exception;
-    public V search(K key);
-    public void delete(K key);
+
+    void insert(K key, V value) throws HashException;
+
+    V search(K key);
+    void delete(K key);
+
+    int getSize();
+
+    int getM();
+
 }
